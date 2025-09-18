@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rishi Raj Prasad | Manufacturing Engineer</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Global Styles & Variables (Light Theme) --- */
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #0056b3;
+            --background-color: #f8f9fa;
+            --surface-color: #ffffff;
+            --text-color: #343a40;
+            --heading-color: #212529;
+            --heading-font: 'Poppins', sans-serif;
+            --body-font: 'Roboto', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--body-font);
+            line-height: 1.7;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        .container { max-width: 1100px; margin: auto; padding: 0 2rem; }
+        section { padding: 5rem 0; overflow-x: hidden; }
+        section h2 { text-align: center; margin-bottom: 3rem; font-size: 2.5rem; font-family: var(--heading-font); color: var(--heading-color); }
+
+        /* --- Preloader --- */
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--background-color); z-index: 2000; display: flex; justify-content: center; align-items: center; }
+        .spinner { border: 8px solid #e0e0e0; border-top: 8px solid var(--primary-color); border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* --- Header & Navigation --- */
+        header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); padding: 1rem 0; position: sticky; top: 0; width: 100%; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: auto; padding: 0 2rem; }
+        nav .logo { font-size: 1.5rem; font-weight: 700; font-family: var(--heading-font); z-index: 10; color: var(--heading-color); }
+        .nav-links { list-style: none; display: flex; }
+        .nav-links a { text-decoration: none; color: var(--text-color); font-weight: 500; padding: 0.5rem 1rem; border-radius: 5px; transition: color 0.3s, background-color 0.3s; }
+        .nav-links a:hover, .nav-links a.active-link { color: #fff; background-color: var(--primary-color); }
+        .hamburger { display: none; cursor: pointer; z-index: 10; }
+        .hamburger .line { width: 2rem; height: 0.25rem; background-color: var(--text-color); border-radius: 10px; transition: all 0.3s linear; margin: 5px 0; }
+
+        /* --- Hero Section --- */
+        #home { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; background-color: #e9ecef; }
+        .hero-content { position: relative; z-index: 2; }
+        .profile-photo { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; border: 5px solid var(--primary-color); box-shadow: 0 0 30px rgba(0, 123, 255, 0.3); }
+        #home h1 { font-size: 3.5rem; margin-bottom: 0.5rem; font-family: var(--heading-font); color: var(--heading-color); }
+        #home .subtitle { font-size: 1.5rem; color: #555; margin-bottom: 2rem; }
+        #typing-effect { font-weight: bold; color: var(--primary-color); }
+        #typing-effect::after { content: '|'; animation: blink 0.7s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+/* Add this to your Hero Section styles */
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #e9ecef; /* Your light theme background */
+}
+
+        /* --- Buttons --- */
+        .btn { display: inline-block; padding: 0.8rem 2.2rem; background: var(--primary-color); color: #fff; text-decoration: none; border-radius: 50px; margin: 0.5rem; transition: all 0.3s ease; border: 2px solid var(--primary-color); }
+      /* Replace the old .btn:hover style with this */
+      .btn:hover {
+      background: var(--secondary-color);
+      border-color: var(--secondary-color);
+      transform: translateY(-5px) scale(1.05); /* Lifts up and grows slightly */
+      box-shadow: 0 7px 20px rgba(0, 123, 255, 0.3);
+      }
+      
+      /* Replace the old .project-card:hover style with this */
+      .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15); /* More pronounced shadow */
+      }
+      
+        .btn-secondary { background: transparent; color: var(--primary-color); }
+        .btn-secondary:hover { background: var(--primary-color); color: #fff; }
+
+        /* --- Skills Section --- */
+        #skills { background: var(--surface-color); }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+        .skill-item { background: #f8f9fa; padding: 2rem; border-radius: 10px; text-align: center; font-weight: 600; font-family: var(--heading-font); border: 1px solid #dee2e6; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; }
+        .skill-item:hover { border-color: var(--primary-color); transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+
+        /* --- Projects Section --- */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .project-card { background: var(--surface-color); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.07); transition: transform 0.3s, box-shadow 0.3s; }
+        .project-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+        .project-card img { width: 100%; height: 200px; object-fit: cover; }
+        .project-info { padding: 1.5rem; }
+        .project-info h3 { font-size: 1.5rem; margin-bottom: 0.5rem; font-family: var(--heading-font); color: var(--heading-color); }
+        .project-info p { margin-bottom: 1.5rem; }
+
+        /* --- Contact Form --- */
+        #contact-form { max-width: 700px; margin: 2rem auto 0 auto; display: flex; flex-direction: column; }
+        #contact-form input, #contact-form textarea { padding: 1rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 5px; font-family: var(--body-font); font-size: 1rem; background: var(--surface-color); color: var(--text-color); }
+        #contact-form button { align-self: center; }
+        #form-result { text-align: center; margin-top: 1rem; font-weight: bold; }
+
+        /* --- Footer --- */
+        footer { background: var(--surface-color); color: #6c757d; text-align: center; padding: 2rem 0; border-top: 1px solid #e7e7e7; }
+        .social-links a { font-size: 1.8rem; margin: 0 1rem; color: #6c757d; transition: color 0.3s ease; }
+        .social-links a:hover { color: var(--primary-color); }
+
+        /* --- Modal Styles --- */
+        .modal { display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(5px); }
+        .modal-content { background-color: var(--surface-color); margin: 10% auto; padding: 2rem; border-radius: 10px; max-width: 700px; position: relative; animation: slideIn 0.5s ease-out; }
+        @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .close-btn { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+        .close-btn:hover { color: var(--primary-color); }
+        #modal-img { width: 100%; height: auto; border-radius: 10px; margin-bottom: 1rem; }
+        #modal-title { margin-bottom: 1rem; color: var(--heading-color); }
+
+        /* --- Scroll Animations --- */
+        .hidden { opacity: 0; transition: opacity 1s ease-out, transform 1s ease-out; }
+        .slide-up { transform: translateY(50px); }
+        .show { opacity: 1; transform: translateY(0); }
+
+        /* --- Back to Top Button --- */
+        #toTopBtn { position: fixed; bottom: 20px; right: 20px; background: var(--primary-color); color: white; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.5rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 100; transition: opacity 0.4s, visibility 0.4s, transform 0.4s; opacity: 0; visibility: hidden; transform: translateY(20px); }
+        #toTopBtn.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+
+        /* --- Responsive Design --- */
+        @media screen and (max-width: 768px) {
+            .hamburger { display: flex; flex-direction: column; }
+            .nav-links { position: fixed; top: 0; right: 0; height: 100vh; width: 250px; background: var(--surface-color); flex-direction: column; align-items: center; justify-content: space-evenly; transform: translateX(100%); transition: transform 0.5s ease-in-out; }
+            .nav-active { transform: translateX(0%); }
+            .toggle .line:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+            .toggle .line:nth-child(2) { opacity: 0; }
+            .toggle .line:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+            #home h1 { font-size: 2.5rem; }
+            section h2 { font-size: 2rem; }
+        
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo"><font color="red">GUESS!</font> who is me</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#social-links" class="nav-link">Social_Media</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+        <div id="particles-js"></div>
+        
+        
+            <div class="hero-content">
+                <img src="I1.jpg" alt="RISHI RAJ PRASAD" class="profile-photo">
+                <h1>Hi, I'm RISHI RAJ PRASAD</h1>
+                <p class="subtitle">I'm a <span id="typing-effect"></span></p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn">View My Projects</a>
+                    <a href="resume.pdf" class="btn btn-secondary" target="_blank">Download Resume</a>
+                </div>
+            </div>
+            
+        </section>
+
+    <script src="particles.min.js"></script>
+    <script src="particles.js"></script>
+    
+        <section id="about" class="hidden">
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>I am a Bachelor of Engineering student at the Central Institute of Plastics Engineering & Technology (CIPET), specializing in Manufacturing Engineering. While my core academic focus is in engineering, my passion lies in the world of web development and cloud computing, where I am actively seeking to combine manufacturing with AI technology.</p>
+                       <br> <p>Beyond my technical projects, I am an active member of the E-Cell at CIPET, where I serve as an Assistant Event Coordinator. This role has been instrumental in developing my skills in communication, event management, planning, and marketing. I am a well-rounded and motivated individual ready to contribute to an innovative team.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="hidden">
+        <div class="container">
+        <h2>My Skills</h2>
+        <div class="skills-grid">
+        <div class="skill-item"><h3>Google Apps Script</h3></div>
+        <div class="skill-item"><h3>JavaScript</h3></div>
+        <div class="skill-item"><h3>HTML & CSS</h3></div>
+        <div class="skill-item"><h3>Event Management</h3></div>
+        <div class="skill-item"><h3>Team Collaboration</h3></div>
+        <div class="skill-item"><h3>Cloud Computing</h3></div>
+        </div>
+        </div>
+        </section>
+
+        <section id="projects" class="hidden">
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <img src="logo-project.jpg" alt="FLEXIMEAL Project Screenshot">
+                        <div class="project-info">
+                            <h3>FLEXIMEAL System</h3>
+                            <p>A web-based application designed for hostels to manage their mess system flexibly.</p>
+                            <button class="btn view-details-btn" data-project="fleximeal">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="hidden">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <p>I'm currently looking for opportunities and am open to collaborations. Feel free to send me a message!</p>
+                <form id="contact-form">
+                    <input type="hidden" name="access_key" value="f45a9ce9-2534-4a12-8b56-fc5537fe0a98">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="password" name="password" placeholder="Enter Password" required>
+                    <textarea name="message" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+                <div id="form-result"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-links"id="social-links">
+            <a href="https://www.linkedin.com/in/rishi-raj-prasad-651ab5332" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Rishi86288" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://x.com/RishiRajPrasad" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/rishi_raj_prasad" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>&copy; 2025 <a href="https://guesswhois.me" >GUESSWHOIS.ME</a> All rights reserved.</p>
+    </footer>
+
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <img id="modal-img" src="" alt="Project Image">
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <div id="modal-tech" class="tech-stack"></div>
+            <div id="modal-links" class="project-links"></div>
+        </div>
+    </div>
+    
+    <a id="toTopBtn" class="hidden"><i class="fas fa-arrow-up"></i></a>
+
+    <script>
+        // --- Preloader ---
+        var preloader = document.getElementById('preloader');
+        window.addEventListener('load', function() {
+            preloader.style.display = 'none';
+        });
+
+        // --- Responsive Navigation ---
+        var hamburger = document.querySelector('.hamburger');
+        var navMenu = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('toggle');
+            navMenu.classList.toggle('nav-active');
+        });
+        // Close nav when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                if (navMenu.classList.contains('nav-active')) {
+                    hamburger.classList.remove('toggle');
+                    navMenu.classList.remove('nav-active');
+                }
+            });
+        });
+
+        // --- Typing Effect (Stable version) ---
+        var typingElement = document.getElementById('typing-effect');
+        var words = ["Manufacturing Engineer", "Web Developer", "Cloud Computing Enthusiast", "Problem Solver"];
+        var wordIndex = 0;
+        var charIndex = 0;
+        var isDeleting = false;
+
+        function type() {
+            var currentWord = words[wordIndex];
+            var typeSpeed = isDeleting ? 75 : 150;
+
+            if (isDeleting) {
+                typingElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                }
+            } else {
+                typingElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+                if (charIndex === currentWord.length) {
+                    isDeleting = true;
+                    setTimeout(type, 1500);
+                    return;
+                }
+            }
+            setTimeout(type, typeSpeed);
+        }
+        type();
+
+        // --- Scroll Animations ---
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.1 });
+        var hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach(function(el) { 
+            el.classList.add('slide-up');
+            observer.observe(el); 
+        });
+
+        // --- Active Nav Link on Scroll ---
+        var sections = document.querySelectorAll('section[id]');
+        var navLinks = document.querySelectorAll('.nav-link');
+        var navObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(function(link) {
+                        var isActive = link.getAttribute('href').substring(1) === entry.target.id;
+                        link.classList.toggle('active-link', isActive);
+                    });
+                }
+            });
+        }, { rootMargin: '-50% 0px -50% 0px' });
+        sections.forEach(function(section) { navObserver.observe(section); });
+        
+        // --- Contact Form Logic ---
+        var form = document.getElementById('contact-form');
+        var result = document.getElementById('form-result');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var formData = new FormData(form);
+            var object = Object.fromEntries(formData);
+            var json = JSON.stringify(object);
+            result.innerHTML = "Sending Message...";
+            fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: json })
+                .then(function(response) { return response.json(); })
+                .then(function(jsonResponse) {
+                    result.innerHTML = jsonResponse.message;
+                    if (!jsonResponse.success) { console.error(jsonResponse); }
+                })
+                .catch(function(error) { result.innerHTML = "Something went wrong!"; })
+                .then(function() {
+                    form.reset();
+                    setTimeout(function() { result.innerHTML = ''; }, 5000);
+                });
+        });
+
+        // --- Back to Top Button ---
+        var toTopBtn = document.getElementById('toTopBtn');
+        window.onscroll = function() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) { toTopBtn.classList.add('visible'); } 
+            else { toTopBtn.classList.remove('visible'); }
+        };
+        toTopBtn.addEventListener('click', function(e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+        // --- Project Modal Logic ---
+        var projectDetails = {
+            fleximeal: {
+                title: "FLEXIMEAL - Flexible Mess Management System",
+                img: "logo-project.jpg",
+                description: "This project was developed to solve a real-world challenge in hostel mess management. It is a web-based application that provides a flexible system for students to manage their meals, reducing food wastage and improving administrative efficiency.",
+                tech: "<strong>Tech Used:</strong> Google Apps Script, Google Sheets, JavaScript, HTML/CSS",
+                links: '<a href="#" class="btn" target="_blank">Live Demo</a> <a href="#" class="btn btn-secondary" target="_blank">View Code</a>'
+            }
+        };
+        var modal = document.getElementById('project-modal');
+        var closeBtn = document.querySelector('.close-btn');
+        document.querySelectorAll('.view-details-btn').forEach(function(button) {
+            button.addEventListener('click', function() {
+                var projectId = button.dataset.project;
+                var data = projectDetails[projectId];
+                document.getElementById('modal-title').textContent = data.title;
+                document.getElementById('modal-img').src = data.img;
+                document.getElementById('modal-description').textContent = data.description;
+                document.getElementById('modal-tech').innerHTML = data.tech;
+                document.getElementById('modal-links').innerHTML = data.links;
+                modal.style.display = 'block';
+            });
+        });
+        closeBtn.onclick = function() { modal.style.display = 'none'; };
+        window.onclick = function(event) { if (event.target == modal) { modal.style.display = 'none'; } };
+        
+        // Add this line AT THE VERY END of your script.js file
+        particlesJS.load('particles-js', 'particles.json', function() {
+        console.log('Particles.js config loaded');
+        });
+       </script>
+    
+</body>
+</html>
+       console.log('Particles.js config loaded');
+        });
+       </script>
+    
+</body>
+</html>
+tml>
